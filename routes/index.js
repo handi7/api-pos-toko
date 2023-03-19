@@ -12,6 +12,8 @@ routes.post("/keep-login", authToken, auth.keepLogin);
 // PRODUCTS
 routes.get("/products", product.all);
 routes.post("/product", uploadSingle, product.add);
+routes.patch("/product", uploadSingle, product.update);
+routes.delete("/product/:id", product.delete);
 
 // CATEGORY
 routes.get("/categories", category.all);
