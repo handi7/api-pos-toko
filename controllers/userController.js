@@ -32,4 +32,24 @@ module.exports = {
       res.status(500).send(error);
     }
   },
+
+  update: async (req, res) => {
+    try {
+      const esc = ["id", "password", "password_updated", "created_at"];
+      let val = "";
+
+      for (const key in req.body) {
+        if (!esc.includes(key)) {
+          if (val) val += ", ";
+          val += `${key} = ${req.body[key]}`;
+        }
+      }
+      const updateQuery = `update users set ${val} where id = ?;`;
+
+      await db.execute(updateQuery, [req.body.id]);
+      res.status(200).send(true);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  },
 };
