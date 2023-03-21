@@ -1,5 +1,5 @@
 const express = require("express");
-const { auth, product, category } = require("../controllers");
+const { auth, product, category, user } = require("../controllers");
 const { authToken } = require("../helper/token");
 const { uploadSingle } = require("../helper/uploader");
 
@@ -17,5 +17,8 @@ routes.delete("/product/:id", product.delete);
 
 // CATEGORY
 routes.get("/categories", category.all);
+
+// USERS
+routes.get("/users", authToken, user.all);
 
 module.exports = routes;
