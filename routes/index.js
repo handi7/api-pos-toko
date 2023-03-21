@@ -20,6 +20,7 @@ routes.get("/categories", category.all);
 
 // USERS
 routes.get("/users", authToken, user.all);
+routes.post("/user", authToken, user.add);
 routes.patch("/user", authToken, user.update);
 
 module.exports = routes;
