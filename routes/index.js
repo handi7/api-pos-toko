@@ -17,6 +17,10 @@ routes.delete("/product/:id", product.delete);
 
 // CATEGORY
 routes.get("/categories", category.all);
+routes.get("/category-data", category.categoryData);
+routes.post("/category", authToken, category.add);
+routes.patch("/category", authToken, category.update);
+routes.delete("/category/:id", authToken, category.delete);
 
 // USERS
 routes.get("/users", authToken, user.all);
