@@ -52,7 +52,7 @@ module.exports = {
   keepLogin: async (req, res) => {
     try {
       const { id, email } = req.decoded;
-      const query = `select id, email from users where id = ? and email = ?;`;
+      const query = `select id, name, username, email, role, is_verified, is_active, password_updated, created_at from users where id = ? and email = ?;`;
 
       const [[data]] = await db.execute(query, [id, email]);
 
