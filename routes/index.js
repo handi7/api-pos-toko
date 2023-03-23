@@ -1,5 +1,5 @@
 const express = require("express");
-const { auth, product, category, user } = require("../controllers");
+const { auth, product, category, user, cart } = require("../controllers");
 const { authToken } = require("../helper/token");
 const { uploadSingle } = require("../helper/uploader");
 
@@ -26,5 +26,11 @@ routes.delete("/category/:id", authToken, category.delete);
 routes.get("/users", authToken, user.all);
 routes.post("/user", authToken, user.add);
 routes.patch("/user", authToken, user.update);
+
+// CART
+routes.get("/cart/:userId", authToken, cart.getByUserId);
+routes.post("/cart", authToken, cart.add);
+routes.patch("/cart", authToken, cart.update);
+routes.delete("/cart/:id", authToken, cart.delete);
 
 module.exports = routes;
